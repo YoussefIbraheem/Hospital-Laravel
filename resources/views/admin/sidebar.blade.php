@@ -13,7 +13,7 @@
               <span class="count bg-success"></span>
             </div>
             <div class="profile-name">
-              <h5 class="mb-0 font-weight-normal">Henry Klein</h5>
+              <h5 class="mb-0 font-weight-normal">{{ $user->name }}</h5>
               <span>Gold Member</span>
             </div>
           </div>
@@ -58,7 +58,7 @@
         <span class="nav-link">Navigation</span>
       </li>
       <li class="nav-item menu-items">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="{{ url('/') }}">
           <span class="menu-icon">
             <i class="mdi mdi-speedometer"></i>
           </span>
@@ -66,11 +66,11 @@
         </a>
       </li>
       <li class="nav-item menu-items">
-        <a class="nav-link" href="pages/forms/basic_elements.html">
+        <a class="nav-link" href="{{ url('view_doctors') }}">
           <span class="menu-icon">
-            <i class="mdi mdi-playlist-play"></i>
+            <i class="mdi mdi-doctor"></i>
           </span>
-          <span class="menu-title">Form Elements</span>
+          <span class="menu-title">View Doctors</span>
         </a>
       </li>
       <li class="nav-item menu-items">

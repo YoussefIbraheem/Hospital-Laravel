@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\AdminController;
+use App\Http\Middleware\isAdmin;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,10 +15,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('admin.home');
-});
+Route::get('/', [HomeController::class ,'index']);
+Route::get('/home', [HomeController::class ,'redirect']);
 
 Route::middleware([
     'auth:sanctum',
@@ -25,4 +26,9 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    Route::middleware([isAdmin::class])->group(function(){
+        Route::get('/view_doctors',[AdminController::class, 'doctorList']);
+        Route::post('/add_doctor',[AdminController::class, 'addDoctor']);
+    });
+    
 });

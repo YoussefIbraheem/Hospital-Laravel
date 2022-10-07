@@ -10,14 +10,14 @@
 
   <title>One Health - Medical Center HTML5 Template</title>
 
-  <link rel="stylesheet" href="{{ asset('assets/css/maicons.css') }}">
+  <link rel="stylesheet" href="{{ asset('user-assets/css/maicons.css') }}">
 
-  <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.css') }}">
+  <link rel="stylesheet" href="{{ asset('user-assets/css/bootstrap.css') }}">
 
-  <link rel="stylesheet" href="{{ asset('assets/vendor/owl-carousel/css/owl.carousel.css') }}">
+  <link rel="stylesheet" href="{{ asset('user-assets/vendor/owl-carousel/css/owl.carousel.css') }}">
 
-  <link rel="stylesheet" href="{{ asset('assets/vendor/animate/animate.css') }}">
+  <link rel="stylesheet" href="{{ asset('user-assets/vendor/animate/animate.css') }}">
 
-  <link rel="stylesheet" href="{{ asset('assets/css/theme.css') }}">
+  <link rel="stylesheet" href="{{ asset('user-assets/css/theme.css') }}">
 </head>
 <body>

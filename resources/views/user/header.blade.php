@@ -58,14 +58,24 @@
             <li class="nav-item">
                <!-- Example single danger button -->
                <div class="btn-group">
-               <button type="button" style="background-color:#00d9a5;" class="btn btn-success dropdown-toggle " data-bs-toggle="dropdown" aria-expanded="false">
-                 Login / Register
-               </button>
-               <ul class="dropdown-menu">
-                 <li><a class="dropdown-item" href="#">Login</a></li>
+               
+               
+                @if(Route::has('login'))
+                @auth
+                <x-app-layout>
+                </x-app-layout>
+                 @else
+                 <button type="button" style="background-color:#00d9a5;" class="btn btn-success dropdown-toggle " data-bs-toggle="dropdown" aria-expanded="false">
+                  Login / Register
+                </button>
+                 <ul class="dropdown-menu">
+                 <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
                  <li><hr class="dropdown-divider"></li>
-                 <li><a class="dropdown-item" href="#">Register</a></li>
-               </ul>
+                 <li><a class="dropdown-item" href="{{ route('register') }}">Register</a></li>
+                </ul>
+                 @endauth
+                 @endif
+               
                </div>
             </li>
           </ul>
