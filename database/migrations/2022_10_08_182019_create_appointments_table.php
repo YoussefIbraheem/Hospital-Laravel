@@ -21,7 +21,6 @@ return new class extends Migration
             $table->date('date')->useCurrent();
             $table->enum('appointment',['9:00AM : 12:00PM','12:00PM : 3:00PM','3:00PM : 6:00PM','6:00PM : 9:00PM','9:00PM : 11:00PM']);
             $table->string('doctor');
-            $table->enum('status',['pending','approved','rejected'])->default('pending');
             $table->text('message')->nullable();
             $table->timestamps();
         });
