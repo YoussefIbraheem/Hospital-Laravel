@@ -36,7 +36,9 @@ Route::middleware([
         Route::post('/update_doctor/{id}',[AdminController::class, 'updateDoctor']);
     });
     // USER ONLY METHODS
-    Route::middleware([isAdmin::class])->group(function(){
-        route::post('add_appointment',[HomeController::class,'bookAppointment']);
+    Route::middleware([isUser::class])->group(function(){
+        Route::post('/add_appointment',[HomeController::class,'bookAppointment']);
+        Route::get('/user_appointments',[HomeController::class,'appointmentsList']);
+        Route::delete('/user_delete_appointment/{id}',[HomeController::class,'deleteAppointment']);
     });
 });

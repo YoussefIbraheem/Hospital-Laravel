@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use App\Models\Appointment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,10 +31,7 @@ class HomeController extends Controller
 
   // APPOINTMENT METHODS
   public function bookAppointment( Request $request){
-    $appointmentsList = ['9:00AM : 12:00PM','12:00PM : 3:00PM','3:00PM : 6:00PM','6:00PM : 9:00PM','9:00PM : 11:00PM'];
-
-    $user = Auth::user();
-
+    
     $details = $request->validate([
       'name'=>'required|max:50',
       'email'=>'required|email|max:50',
@@ -41,15 +39,38 @@ class HomeController extends Controller
       'date'=>'required',
       'appointment'=>'required',
       'doctor'=>'required',
-      'message'=>'required|max:100'
+      'message'=>'max:200',
     ]);
-
-    Appointment::create($details);
-    session()->flash('addAppointment',"Appointment added successfully please expect an email on $user->email");
+    if($request->date < Carbon::now()){
+      return redirect()->back()->withErrors('Appointment cannot be set to be in the past');
+    }
+    Appointment::create([
+      'name'=>$request->name,
+      'email'=>$request->email,
+      'phone'=>$request->phone,
+      'date'=>$request->date,
+      'appointment'=>$request->appointment,
+      'doctor'=>$request->doctor,
+      'message'=>$request->message,
+      'user_id'=>Auth::user()->id
+    ]);
+    session()->flash('addAppointment',"Appointment added successfully please expect an email on $request->email");
 
     return redirect()->back();
 
 
+  }
+
+  public function appointmentsList(){
+    $user = Auth::user()->id;
+    $userAppointments = Appointment::where('user_id',$user)->get();
+    return view('user.appointments')->with(['userAppointments'=>$userAppointments]);
+  }
+
+  public function deleteAppointment($id){
+    $appointmentDetails = Appointment::findOrFail($id);
+    $appointmentDetails->delete();
+    return redirect()->back();
   }
 
 }

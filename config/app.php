@@ -197,7 +197,8 @@ return [
         App\Providers\FortifyServiceProvider::class,
         App\Providers\JetstreamServiceProvider::class,
         App\Providers\userServiceProvider::class,
-        App\Providers\doctorsServiceProvider::class
+        App\Providers\doctorsServiceProvider::class,
+        App\Providers\AppointmetnsServiceProvider::class
 
     ],
 

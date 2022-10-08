@@ -3,8 +3,10 @@
   <div class="back-to-top"></div>
 
   @include('user.header')
-
+  @include('user.errors')
+      
   <div class="page-hero bg-image overlay-dark" style="background-image: url(../user-assets/img/bg_image_1.jpg);">
+   
     <div class="hero-section">
       <div class="container text-center wow zoomIn">
         <span class="subhead">Let's make your life happier</span>
@@ -47,7 +49,7 @@
       </div>
     </div> <!-- .page-section -->
 
-    <div class="page-section pb-0">
+    <div id="about" class="page-section pb-0">
       <div class="container">
         <div class="row align-items-center">
           <div class="col-lg-6 py-3 wow fadeInUp">
