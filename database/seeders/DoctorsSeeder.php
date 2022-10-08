@@ -26,7 +26,7 @@ class DoctorsSeeder extends Seeder
             'phone'=>$faker->phoneNumber(),
             'specialty'=>$faker->randomElement(["Anatomical Pathology", "Anesthesiology", "Cardiology", "Cardiovascular/Thoracic Surgery", "Clinical Immunology/Allergy", "Critical Care Medicine", "Dermatology", "Diagnostic Radiology", "Emergency Medicine", "Endocrinology and Metabolism", "Family Medicine", "Gastroenterology", "General Internal Medicine", "General Surgery", "General/Clinical Pathology", "Geriatric Medicine", "Hematology", "Medical Biochemistry", "Medical Genetics", "Medical Microbiology and Infectious Diseases", "Medical Oncology", "Nephrology", "Neurology", "Neurosurgery", "Nuclear Medicine", "Obstetrics/Gynecology", "Occupational Medicine", "Ophthalmology", "Orthopedic Surgery", "Otolaryngology", "Pediatrics", "Physical Medicine and Rehabilitation", "Plastic Surgery", "Psychiatry", "Public Health and Preventive Medicine", "Radiation Oncology", "Respirology", "Rheumatology", "Urology"]),
             'room_no'=>$faker->numberBetween(1,100),
-            'profile_pic'=>$faker->randomElement($imgs)
+            'profile_pic'=>"doctors/".$faker->randomElement($imgs)
         ]);
     }
     }

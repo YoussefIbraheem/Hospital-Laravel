@@ -29,6 +29,9 @@ Route::middleware([
     Route::middleware([isAdmin::class])->group(function(){
         Route::get('/view_doctors',[AdminController::class, 'doctorList']);
         Route::post('/add_doctor',[AdminController::class, 'addDoctor']);
+        Route::delete('/delete_doctor/{id}',[AdminController::class, 'deleteDoctor']);
+        Route::get('/edit_doctor/{id}',[AdminController::class, 'editDoctor']);
+        Route::post('/update_doctor/{id}',[AdminController::class, 'updateDoctor']);
     });
     
 });

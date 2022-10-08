@@ -8,6 +8,14 @@ use Illuminate\Support\Facades\Auth;
 class HomeController extends Controller
 {
 
+  public function bookAppointment( Request $request){
+
+    $details = $request->validate([
+
+    ]);
+
+  }
+
   public function index(){
     if(Auth::id()){
       return redirect(url('/home'));

@@ -5,32 +5,37 @@
       <form class="main-form">
         <div class="row mt-5 ">
           <div class="col-12 col-sm-6 py-2 wow fadeInLeft">
-            <input type="text" class="form-control" placeholder="Full name">
+            <input type="text" name="name" class="form-control" placeholder="Full name">
           </div>
           <div class="col-12 col-sm-6 py-2 wow fadeInRight">
-            <input type="text" class="form-control" placeholder="Email address..">
+            <input type="email" name="email" class="form-control" placeholder="Email address..">
           </div>
           <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
-            <input type="date" class="form-control">
+            <input type="date" name="date" class="form-control">
           </div>
-          <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
-            <select name="departement" id="departement" class="custom-select">
-              <option value="general">General Health</option>
-              <option value="cardiology">Cardiology</option>
-              <option value="dental">Dental</option>
-              <option value="neurology">Neurology</option>
-              <option value="orthopaedics">Orthopaedics</option>
+          <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
+           <select class="form-control" name="appointment" id="">
+            <option value="">9:00 AM : 12:00 PM </option>
+           </select>
+          </div>
+          <div class="col-12 col-sm-12 py-2 wow fadeInRight" data-wow-delay="300ms">
+            <select name="doctor" id="departement" class="form-control">
+              <option disabled selected hidden value="">--Select Doctor--</option>
+              @foreach ($doctorsView as $doctor)  
+              <option value="general">{{ $doctor->name."/".$doctor->specialty }}</option>
+              @endforeach
+              
             </select>
           </div>
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
-            <input type="text" class="form-control" placeholder="Number..">
+            <input type="text" name="phone" class="form-control" placeholder="Number..">
           </div>
           <div class="col-12 py-2 wow fadeInUp" data-wow-delay="300ms">
             <textarea name="message" id="message" class="form-control" rows="6" placeholder="Enter message.."></textarea>
           </div>
         </div>
 
-        <button type="submit" class="btn btn-primary mt-3 wow zoomIn">Submit Request</button>
+        <button type="submit" class="btn btn-outline-primary mt-3 wow zoomIn">Submit Request</button>
       </form>
     </div>
   </div>
