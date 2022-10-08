@@ -15,9 +15,10 @@ use App\Http\Middleware\isAdmin;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// GENERAL METHODS
 Route::get('/', [HomeController::class ,'index']);
 Route::get('/home', [HomeController::class ,'redirect']);
-
+// LOGGED IN ONLY METHODS
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -26,6 +27,7 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+    // ADMIN ONLY METHODS
     Route::middleware([isAdmin::class])->group(function(){
         Route::get('/view_doctors',[AdminController::class, 'doctorList']);
         Route::post('/add_doctor',[AdminController::class, 'addDoctor']);
@@ -33,5 +35,8 @@ Route::middleware([
         Route::get('/edit_doctor/{id}',[AdminController::class, 'editDoctor']);
         Route::post('/update_doctor/{id}',[AdminController::class, 'updateDoctor']);
     });
-    
+    // USER ONLY METHODS
+    Route::middleware([isAdmin::class])->group(function(){
+        route::post('add_appointment',[HomeController::class,'bookAppointment']);
+    });
 });
