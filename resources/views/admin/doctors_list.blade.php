@@ -47,7 +47,7 @@
                       
                         <ul class="dropdown-menu">
                           <li>
-                            <!-- Add Doctor Button trigger modal -->
+                            <!-- Update Doctor Button trigger modal -->
                             <button type="button" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#editDoctor{{ $doctor->id }}">
                               Update
                             </button>
@@ -64,12 +64,13 @@
                       </div>
                     </td>          
                 </tr>
+                <!-- Update Doctor Modal -->
                 <div class="modal fade" id="editDoctor{{ $doctor->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Update Doctor</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
                       </div>
                       <div class="modal-body">
                         <div class="d-flex justify-content-center align-content-center">
@@ -135,7 +136,7 @@
   <div class="modal-dialog">
      <div class="modal-content">
          <div class="modal-header">
-             <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+             <h1 class="modal-title fs-5" id="exampleModalLabel">Add Doctor</h1>
              <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close">X</button>
          </div>
          <div class="modal-body">

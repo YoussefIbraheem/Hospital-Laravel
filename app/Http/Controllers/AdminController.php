@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Appointment;
 use App\Models\Doctor;
+use App\Notifications\appointmentNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
@@ -78,5 +81,33 @@ class AdminController extends Controller
         session()->flash('deleteSuccess','Information deleted successfully');
         return redirect()->back();
     }
+
+    public function viewAppointments(){
+        $appointmentList = Appointment::paginate(10);
+        return view('admin.appointments',compact('appointmentList'));
+    }
+
+    public function statusApproved($id){
+        $appointment = Appointment::findOrFail($id);
+        $appointment->status = 'approved';
+        $appointment->save();
+        return redirect()->back();
+
+    }
+
+    public function statusRejected($id){
+        $appointment = Appointment::findOrFail($id);
+        $appointment->status = 'rejected';
+        $appointment->save();
+        return redirect()->back();
+
+    }
+
+    public function sendEmail($id){
+        $data = Appointment::findOrFail($id);
+        Notification::send($data, new appointmentNotification($data));
+        return redirect()->back(); 
+    }
+
 
 }

@@ -34,6 +34,10 @@ Route::middleware([
         Route::delete('/delete_doctor/{id}',[AdminController::class, 'deleteDoctor']);
         Route::get('/edit_doctor/{id}',[AdminController::class, 'editDoctor']);
         Route::post('/update_doctor/{id}',[AdminController::class, 'updateDoctor']);
+        Route::get('/view_appointments',[AdminController::class, 'viewAppointments']);
+        Route::post('/status_approved/{id}',[AdminController::class, 'statusApproved']);
+        Route::post('/status_rejected/{id}',[AdminController::class, 'statusRejected']);
+        Route::post('/send_email/{id}',[AdminController::class, 'sendEmail']);
     });
     // USER ONLY METHODS
     Route::middleware([isUser::class])->group(function(){
