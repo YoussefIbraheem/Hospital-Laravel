@@ -11,4 +11,7 @@ class Appointment extends Model
     use HasFactory;
     use Notifiable;
     protected $fillable = ['name','email','date','appointment','doctor','phone','message','user_id'];
+    public function doctor(){
+       return $this->belongsToMany(Doctor::class,'doctor_id')->withPivot('appointment_doctor');
+    }
 }
