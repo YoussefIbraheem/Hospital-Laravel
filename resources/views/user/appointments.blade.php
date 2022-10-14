@@ -30,7 +30,7 @@
             <td>{{ $userAppointment->date }}</td>
             <td>{{ $userAppointment->phone }}</td>
             <td>{{ $userAppointment->appointment }}</td>
-            <td>{{ $userAppointment->doctor }}</td>
+            <td>{{ $userAppointment->doctor->name}}</td>
             <td>{{ $userAppointment->message }}</td>
            
             <td class=" @if($userAppointment->status == 'pending')

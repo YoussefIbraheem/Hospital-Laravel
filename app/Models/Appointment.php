@@ -10,8 +10,11 @@ class Appointment extends Model
 {
     use HasFactory;
     use Notifiable;
-    protected $fillable = ['name','email','date','appointment','doctor','phone','message','user_id'];
-    public function doctor(){
-       return $this->belongsToMany(Doctor::class,'appointment_doctor','doctor_id','appointment_id');
-    }
+    protected $fillable = ['name','email','date','appointment','phone','message','user_id','doctor_id'];
+    public function user(){
+        return $this->belongsTo(User::class);
+     }
+     public function doctor(){
+        return $this->belongsTo(Doctor::class);
+     }
 }

@@ -33,7 +33,7 @@
                         <td>{{ $appointment->name }}</td>
                         <td>{{ $appointment->email }}</td>
                         <td>{{ $appointment->phone }}</td>
-                        <td>{{ $appointment->doctor }}</td>
+                        <td>{{ $appointment->doctor->name }}</td>
                         <td>{{ $appointment->date }}</td>
                         <td>{{ $appointment->appointment }}</td>
                         <td>
@@ -58,7 +58,12 @@
                               </ul>
                             </div>
                         </td>
-                        <td> <form action="{{ url("/send_email/$appointment->id") }}" method="post">@csrf<button type="submit" class="btn btn-sm btn-success ">Send Mail</button></form></td>
+                        <td> 
+                          <form action="{{ url("/send_email/$appointment->id") }}"  method="post">
+                            @csrf<button @if ($appointment->status == 'pending')disabled
+                            @endif type="submit" class="btn btn-success">Send Mail</button>
+                         </form>
+                        </td>
                       </tr> 
                       {{-- Message Modal --}}
                       <div class="modal fade" id="{{"patientMessage".$appointment->id }}" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">

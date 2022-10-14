@@ -26,7 +26,7 @@
             <select name="doctor" id="departement" class="form-control">
               <option disabled selected hidden value="">--Select Doctor--</option>
               @foreach ($doctorsView as $doctor)  
-              <option value="{{ $doctor->name }}">{{ $doctor->name."/".$doctor->specialty }}</option>
+              <option value="{{ $doctor->id }}">{{ $doctor->name."/".$doctor->specialty }}</option>
               @endforeach
               
             </select>

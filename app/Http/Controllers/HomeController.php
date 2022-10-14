@@ -38,7 +38,6 @@ class HomeController extends Controller
       'phone'=>'required|max:50',
       'date'=>'required',
       'appointment'=>'required',
-      'doctor'=>'required',
       'message'=>'max:200',
     ]);
     if($request->date < Carbon::now()){
@@ -50,9 +49,9 @@ class HomeController extends Controller
       'phone'=>$request->phone,
       'date'=>$request->date,
       'appointment'=>$request->appointment,
-      'doctor'=>$request->doctor,
       'message'=>$request->message,
-      'user_id'=>Auth::user()->id
+      'user_id'=>Auth::user()->id,
+      'doctor_id'=>$request->doctor
     ]);
     session()->flash('addAppointment',"Appointment added successfully please expect an email on $request->email");
 
